@@ -2,8 +2,8 @@ public class Tugas {
     String name = "Bagus";
     String domisili = "Tangerang";
 
-    void arithmetic() {
-        System.out.println("Hasil dari 138473 / 3432 adalah " + (138473 / 3432));
+    void arithmetic(int a, int b) {
+        System.out.println("Hasil dari pembagian " + a + "/" + b + " adalah adalah " + (a / b));
     }
 
     void triangle() {

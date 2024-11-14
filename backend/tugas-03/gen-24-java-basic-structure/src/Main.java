@@ -1,6 +1,7 @@
 public class Main {
     public static void main(String[] args) {
         Tugas tugas = new Tugas();
+        tugas.arithmetic(1000000, 50);
         tugas.triangle();
         tugas.sumEvenOdd(2, 3);
 

@@ -1,25 +1,16 @@
 public class Makanan extends Product{
-    private String nama = super.nama;
-    private String harga = super.harga;
+    private String rasa;
 
-    public String getNama() {
-        return nama;
+    public String getRasa() {
+        return this.rasa;
     }
 
-    public void setNama(String nama) {
-        this.nama = nama;
-    }
-
-    public String getHarga() {
-        return harga;
-    }
-
-    public void setHarga(String harga) {
-        this.harga = harga;
+    public void setRasa(String rasa) {
+        this.rasa = rasa;
     }
 
     @Override
     void display() {
-        System.out.println("Makanan " + nama + " dengan harga " + harga);
+        System.out.println("Makanan " + getNama() + " dengan harga " + getHarga());
     }
 }

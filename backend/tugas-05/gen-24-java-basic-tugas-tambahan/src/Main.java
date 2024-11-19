@@ -11,16 +11,16 @@ public class Main {
 
     private static void pola1(int range) {
         System.out.println("Pola 1");
-        int count = 65;
+        int asciiA = 65;
         for (int i = 1; i <= range; i++) {
             for (int j = 1; j <= range; j++) {
                 if (j <= (range/2)) {
-                    System.out.print((char)count++);
+                    System.out.print((char)asciiA++);
                 } else {
-                    System.out.print((char)count--);
+                    System.out.print((char)asciiA--);
                 }
             }
-            count = 65;
+            asciiA = 65;
             System.out.println();
         }
         System.out.println();

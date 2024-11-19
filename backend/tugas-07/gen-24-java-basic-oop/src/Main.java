@@ -47,5 +47,15 @@ public class Main {
         obat3.setNama("Ultraflue");
         obat3.setHarga("4000");
         obat3.display();
+
+        Product p1 = new Obat();
+        p1.setNama("Obat A");
+        p1.setHarga("4000");
+        p1.display();
+
+        Product p2 = new Makanan();
+        p2.setNama("Tahu");
+        p2.setHarga("5000");
+        p2.display();
     }
 }

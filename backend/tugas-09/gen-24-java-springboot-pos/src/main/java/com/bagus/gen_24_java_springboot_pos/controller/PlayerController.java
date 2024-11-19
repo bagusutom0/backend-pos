@@ -20,7 +20,7 @@ public class PlayerController {
     public ResponseEntity<String> greetingPlayer(@PathVariable Long playerId) {
         Optional<Player> player = playerService.findPlayerById(playerId);
         return player.map(value -> ResponseEntity.ok("Welcome player " + value.getNickname())).orElseGet(() ->
-                ResponseEntity.status(HttpStatus.NOT_FOUND).body("Player not found")
+                ResponseEntity.status(HttpStatus.NOT_FOUND).body("Player not found!")
         );
     }
 

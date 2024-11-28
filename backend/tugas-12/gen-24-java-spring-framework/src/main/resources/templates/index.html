@@ -17,18 +17,25 @@
         <th>Kategori</th>
         <th>Harga</th>
         <th>Stok</th>
+        <th>Action</th>
       </tr>
       </thead>
       <tbody>
       <tr th:each="product:${products}">
-        <th th:text="product.id"></th>
-        <td th:text="product.nama"></td>
-        <td th:text="product.kategori"></td>
-        <td th:text="product.harga"></td>
-        <td th:text="product.stok"></td>
+        <th th:text="${product.id}"></th>
+        <td th:text="${product.nama}"></td>
+        <td th:text="${product.kategori}"></td>
+        <td th:text="${product.harga}"></td>
+        <td th:text="${product.stok}"></td>
+        <td>
+          <a th:href="@{/update/{id}(id=${product.id})}">Edit</a> |
+          <a th:href="@{/delete/{id}(id=${product.id})}">Delete</a>
+        </td>
       </tr>
       </tbody>
     </table>
+    <br>
+    <a class="btn btn-primary" th:href="@{/save}">Add Product</a>
   </div>
 
 <script src="/webjars/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>

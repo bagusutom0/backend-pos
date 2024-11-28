@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" data-bs-theme="dark">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TUGAS 12 Bagus</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="container text-center my-5">
+    <h1>Save Product</h1>
+    <form class="form" th:action="@{/save}" th:object="${product}" method="post">
+        <label>Id:</label>
+        <input type="text" th:field="*{id}" /><br/>
+        <label>Nama:</label>
+        <input type="text" th:field="*{nama}" /><br/>
+        <label>Kategori:</label>
+        <input type="text" th:field="*{kategori}" /><br/>
+        <label>Harga:</label>
+        <input type="number" th:field="*{Harga}" /><br/>
+        <label>Stok:</label>
+        <input type="number" th:field="*{stok}" /><br/>
+        <button type="submit">Save</button>
+    </form>
+    <a href="/">Back</a>
+</div>
+
+<script src="/webjars/bootstrap/js/bootstrap.bundle.min.js" type="text/javascript"></script>
+</body>
+</html>

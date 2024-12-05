@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: gen-24-java-springboot-pos-consumer-kafka
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    consumer:
+      group-id: pos-consumer-group
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

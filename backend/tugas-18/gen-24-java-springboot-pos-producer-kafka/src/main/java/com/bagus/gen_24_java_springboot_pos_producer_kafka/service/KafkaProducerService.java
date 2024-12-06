@@ -16,5 +16,7 @@ public class KafkaProducerService {
 
     public void sendProduct(Product product) {
         kafkaTemplate.send(topicName, product);
+        System.out.println("Product " + product +
+                " has been sucessfully sent to the topic: " + topicName);
     }
 }

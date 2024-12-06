@@ -5,11 +5,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
+@Table
 public class Product {
     @Id
     private Long id;
     private String name;
     private int price;
+
+    public Product() {}
 
     public Product(String name, Long id, int price) {
         this.name = name;

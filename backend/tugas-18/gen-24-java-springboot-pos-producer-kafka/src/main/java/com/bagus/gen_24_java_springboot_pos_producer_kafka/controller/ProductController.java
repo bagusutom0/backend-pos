@@ -17,9 +17,15 @@ public class ProductController {
     public ProductController(ProductRepository repository, KafkaProducerService service) {
         this.repository = repository;
         this.service = service;
+
+        repository.save(new Product("ayam", 1L, 35000));
+        repository.save(new Product("ikan", 2L, 18000));
+        repository.save(new Product("tahu", 3L, 5000));
+        repository.save(new Product("tempe", 4L, 3000));
+        repository.save(new Product("bayam", 5L, 2000));
     }
 
-    @GetMapping("/send-product")
+    @GetMapping("/send")
     public String pushProductToKafka() {
         List<Product> products = repository.findAll();
         products.forEach(service::sendProduct);

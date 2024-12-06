@@ -16,6 +16,6 @@ public class KafkaConsumerService {
     }
 
     public String getProduct() {
-        return product;
+        return product ;
     }
 }

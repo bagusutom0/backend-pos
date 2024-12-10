@@ -65,6 +65,7 @@ public class VAService {
                     .doOnError(error -> System.err.println("Failed to notify merchant: " + error.getMessage()))
                     .subscribe();
 
+
             return va;
         } else {
             throw new EntityNotFoundException("Virtual Account not found");

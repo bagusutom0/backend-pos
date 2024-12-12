@@ -3,6 +3,7 @@ package com.bagu.propay_paymentgateway.service;
 import com.bagu.propay_paymentgateway.controller.PaymentCustomerRequest;
 import com.bagu.propay_paymentgateway.controller.PaymentRequest;
 import com.bagu.propay_paymentgateway.controller.VARequest;
+import com.bagu.propay_paymentgateway.controller.VAResponse;
 import com.bagu.propay_paymentgateway.entity.Merchant;
 import com.bagu.propay_paymentgateway.entity.MerchantRepository;
 import com.bagu.propay_paymentgateway.entity.VA;
@@ -41,7 +42,7 @@ public class VAService {
         return vaRepository.save(va);
     }
 
-    public VA processPayment(PaymentRequest request) {
+    public VAResponse processPayment(PaymentRequest request) {
         Optional<VA> vaOptional = vaRepository.findByVaNumber(request.getVaNumber());
         if (vaOptional.isPresent()) {
             VA va = vaOptional.get();
@@ -65,8 +66,10 @@ public class VAService {
                     .doOnError(error -> System.err.println("Failed to notify merchant: " + error.getMessage()))
                     .subscribe();
 
-
-            return va;
+            VAResponse vaResponse = new VAResponse();
+            vaResponse.setVaNumber(va.getVaNumber());
+            vaResponse.setAmount(0.0);
+            return vaResponse;
         } else {
             throw new EntityNotFoundException("Virtual Account not found");
         }

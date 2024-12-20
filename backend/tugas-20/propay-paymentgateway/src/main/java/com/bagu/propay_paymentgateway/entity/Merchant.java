@@ -21,4 +21,6 @@ public class Merchant {
     private Integer id;
     private String name;
     private String ucode;
+    private String token;
+    private PaymentMethod method;
 }

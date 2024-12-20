@@ -5,4 +5,5 @@ import lombok.Data;
 @Data
 public class PaymentRequest {
     private String vaNumber;
+    private String paymentMethod;
 }

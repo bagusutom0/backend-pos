@@ -4,11 +4,13 @@ import com.bagu.propay_paymentgateway.controller.RegisterRequest;
 import com.bagu.propay_paymentgateway.controller.MerchantRequest;
 import com.bagu.propay_paymentgateway.entity.Merchant;
 import com.bagu.propay_paymentgateway.entity.MerchantRepository;
+import com.bagu.propay_paymentgateway.entity.PaymentMethod;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.Random;
+import java.util.UUID;
 
 @Service
 //@RequiredArgsConstructor
@@ -25,17 +27,23 @@ public class MerchantService {
         String merchantUcode = "";
         do {
             merchantUcode = String.format("%04d", new Random().nextInt(10000));
+            merchantUcode += String.valueOf(PaymentMethod.valueOf(request.getMethod()).ordinal());
         } while (merchantRepository.findByUcode(merchantUcode).isPresent()); // dapat menimbulkan infinite loop apabila merchant ucode sudah penuh
 
+        String token = UUID.randomUUID().toString();
         Merchant merchant = Merchant.builder()
                 .name(request.getName())
                 .ucode(merchantUcode)
+                .token(token)
+                .method(PaymentMethod.valueOf(request.getMethod()))
                 .build();
 
         WebClient.Builder webClientBuilder = WebClient.builder();
         RegisterRequest registerRequest = new RegisterRequest();
         registerRequest.setPgwName("ProPay");
         registerRequest.setMerchantUcode(merchantUcode);
+        registerRequest.setToken(token);
+        registerRequest.setMethod(request.getMethod());
 
         webClientBuilder.build()
                 .post()

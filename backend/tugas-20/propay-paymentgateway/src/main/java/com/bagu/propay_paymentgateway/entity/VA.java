@@ -24,8 +24,9 @@ public class VA {
     private Integer id;
     private Integer merchantId;
     private String vaNumber;
-    private Double amount;
+    private Long amount;
     private LocalDateTime paymentDate;
     private String paymentCallBackUri;
     private LocalDateTime createdDate;
+    private String token;
 }

@@ -5,5 +5,6 @@ import lombok.Data;
 @Data
 public class MerchantRequest {
     private String name;
+    private String method;
     private String registerCallbackUri;
 }

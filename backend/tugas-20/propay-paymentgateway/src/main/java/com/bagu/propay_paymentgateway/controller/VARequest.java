@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class VARequest {
     private String vaNumber;
-    private Double amount;
+    private Long amount;
+    private String token;
     private String paymentCallbackUri;
 }

@@ -16,7 +16,6 @@ import org.springframework.web.reactive.function.client.WebClient;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
-import java.util.UUID;
 
 @Service
 @Transactional
@@ -27,7 +26,7 @@ public class VAService {
     private MerchantRepository merchantRepository;
 
     public VA insertVa(VARequest request) {
-        String ucode = request.getVaNumber().substring(0,4);
+        String ucode = request.getVaNumber().substring(0,5);
         Merchant merchant = merchantRepository.findByUcode(ucode)
                 .orElseThrow(() -> new EntityNotFoundException("Merchant not found"));
 
@@ -38,6 +37,7 @@ public class VAService {
         va.setAmount(request.getAmount());
         va.setPaymentCallBackUri(request.getPaymentCallbackUri());
         va.setCreatedDate(LocalDateTime.now());
+        va.setToken(request.getToken());
 
         return vaRepository.save(va);
     }
@@ -47,14 +47,16 @@ public class VAService {
         if (vaOptional.isPresent()) {
             VA va = vaOptional.get();
             va.setPaymentDate(LocalDateTime.now());
-            vaRepository.save(va);
+            VA savedVA = vaRepository.save(va);
 
             // notify merchant
             WebClient.Builder webClientBuilder = WebClient.builder();
             PaymentCustomerRequest paymentCustomerRequest = new PaymentCustomerRequest();
             paymentCustomerRequest.setVaNumber(request.getVaNumber());
-            paymentCustomerRequest.setPaid(true);
+            paymentCustomerRequest.setIsPaid(true);
             paymentCustomerRequest.setPaymentDate(LocalDateTime.now());
+            paymentCustomerRequest.setToken(va.getToken());
+            paymentCustomerRequest.setPaymentMethod(request.getPaymentMethod());
 
             webClientBuilder.build()
                     .post()
@@ -69,6 +71,8 @@ public class VAService {
             VAResponse vaResponse = new VAResponse();
             vaResponse.setVaNumber(va.getVaNumber());
             vaResponse.setAmount(0.0);
+
+            vaRepository.deleteById(va.getId());
             return vaResponse;
         } else {
             throw new EntityNotFoundException("Virtual Account not found");

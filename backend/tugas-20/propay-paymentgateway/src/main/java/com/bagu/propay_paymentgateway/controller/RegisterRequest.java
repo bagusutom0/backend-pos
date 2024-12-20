@@ -6,4 +6,6 @@ import lombok.Data;
 public class RegisterRequest {
     private String pgwName;
     private String merchantUcode;
+    private String token;
+    private String method;
 }

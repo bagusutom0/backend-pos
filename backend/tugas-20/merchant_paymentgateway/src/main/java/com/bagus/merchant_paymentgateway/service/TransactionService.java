@@ -39,7 +39,7 @@ public class TransactionService {
                     .createdAt(LocalDateTime.now())
                     .build();
 
-            // request va
+            // insert va
             String url = "http://localhost:8081/propay/api/v1/va/add";
             WebClient.Builder webClientBuilder = WebClient.builder();
             VaRequest vaRequest = new VaRequest();

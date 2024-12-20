@@ -3,7 +3,6 @@ package com.bagu.propay_paymentgateway.controller;
 import com.bagu.propay_paymentgateway.entity.VA;
 import com.bagu.propay_paymentgateway.service.VAService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +21,7 @@ public class VAController {
     }
 
     @PostMapping("/payment")
-    public ResponseEntity<VA> paymentVA(@RequestBody PaymentRequest request) {
+    public ResponseEntity<VAResponse> paymentVA(@RequestBody PaymentRequest request) {
         return ResponseEntity.ok(service.processPayment(request));
     }
 }

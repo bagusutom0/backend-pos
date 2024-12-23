@@ -1,0 +1,282 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f2f2e3;
+}
+
+body {
+  font-family: Lora, sans-serif;
+  color: #505041;
+}
+
+.subtitle {
+  color: #81827c;
+}
+
+.navbar {
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navbar img {
+  height: 40px;
+  width: 40px;
+  border-radius: 8px;
+}
+
+.navbar a {
+  text-decoration: none;
+}
+
+.navbar span {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar .nav-button a {
+  margin-right: 16px;
+  color: #505041;
+}
+
+.navbar .nav-button .nav-text {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.navbar #subscribe {
+  background-color: #e85c57;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 8px;
+  color: white;
+  border: 0px;
+}
+
+.container {
+  padding-left: 250px;
+  padding-right: 250px;
+  padding-top: 28px;
+  padding-bottom: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.container h3 {
+  font-weight: normal;
+  margin-top: 12px;
+}
+
+.container .profile {
+  margin-top: 14px;
+  display: flex;
+}
+
+.container .profile img {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.profile .profile-info {
+  margin-left: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profile .profile-info a {
+  text-decoration: none;
+  color: inherit;
+  font-size: 12px;
+}
+
+.profile .profile-info span {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.container hr {
+  width: 100%;
+  color: #81827c;
+  margin-top: 14px;
+}
+
+.container div {
+  width: 100%;
+}
+
+.social {
+  display: flex;
+  margin-top: 14px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.social button {
+  height: 40px;
+  width: 70px;
+  border: 1px solid black;
+  border-radius: 24px;
+}
+
+.social a {
+  text-decoration: none;
+}
+
+.container #img-1 {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.container p {
+  margin-top: 14px;
+  font-size: 19px;
+}
+
+.container .subscribe {
+  display: inline;
+  width: 60%;
+  margin-top: 14px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.container .subscribe-footer {
+  display: inline;
+  width: 100vw;
+  margin-top: 24px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  background-color: #e85c57;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: 32px;
+}
+
+.subscribe span {
+  font-size: 18px;
+}
+
+.subscribe-footer span {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  background-color: #e85c57;
+}
+
+.subscribe div {
+  margin-top: 24px;
+  display: flex;
+}
+
+.subscribe-footer div {
+  margin-top: 24px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  background-color: #e85c57;
+  width: 100%;
+}
+
+.subscribe div input {
+  width: 300px;
+  border: 1px solid #e85c57;
+  border-right: none;
+  border-radius: 8px 0px 0px 8px;
+  background-color: #e3e3d5;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.subscribe-footer div input {
+  width: 300px;
+  border: 1px solid #e85c57;
+  border-right: none;
+  border-radius: 8px 0px 0px 8px;
+  background-color: #e3e3d5;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.subscribe div button {
+  background-color: #e85c57;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border: 0px;
+  border-radius: 0px 8px 8px 0px;
+  color: white;
+}
+
+.subscribe-footer div button {
+  background-color: #e85c57;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  border-radius: 0px 8px 8px 0px;
+  color: white;
+  border: 1px solid white;
+}
+
+.container #img-2 {
+  margin-top: 24px;
+  width: 50%;
+}
+
+.container #img-2-subtitle {
+  font-size: 14px;
+  margin-top: 12px;
+  margin-bottom: 24px;
+}
+
+.container #subscribe-2 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}
+
+.people {
+  display: flex;
+  width: 100%;
+  margin-top: 24px;
+  margin-bottom: 14px;
+}
+
+.people img {
+  width: 40px;
+  height: 40px;
+  margin: 0px 0px 0px -8px;
+  border-radius: 50%;
+}
+
+.people div {
+  display: flex;
+  align-items: center;
+  margin-left: 12px;
+  width: 130px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.people div a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #81827c;
+  font-size: 13px;
+}

@@ -1,0 +1,321 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 24px;
+}
+
+.navbar i {
+  color: black;
+}
+
+.navbar div {
+  display: inline;
+}
+
+.navbar a {
+  text-decoration: none;
+  margin: 0px 12px;
+}
+
+.nav-link {
+  margin-left: 24px;
+}
+
+.nav-link span {
+  margin: 0x 32px;
+}
+
+.nav-link button {
+  border: 0px;
+  background-color: white;
+}
+
+.dashboard {
+  background-color: black;
+}
+
+.dashboard img {
+  position: relative;
+  left: 50%;
+  width: 50%;
+  height: 700px;
+  object-fit: cover;
+}
+
+.dashboard h1 {
+  position: absolute;
+  top: 300px;
+  left: 80px;
+  width: 500px;
+  color: white;
+  font-size: 72px;
+}
+
+.dashboard h3 {
+  position: absolute;
+  top: 480px;
+  left: 80px;
+  color: white;
+}
+
+.list {
+  padding: 64px 42px;
+}
+
+.list .top {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  margin-bottom: 32px;
+}
+
+.list .top h3 {
+  font-weight: normal;
+  margin-top: 8px;
+}
+
+.list .action div {
+  display: inline;
+}
+
+.list .action .input-container input {
+  padding: 8px 8px 8px 28px;
+  border-radius: 8px;
+  border: 1px solid black;
+  width: 80px;
+}
+
+.list .action .input-container i {
+  position: relative;
+  left: 28px;
+}
+
+.list .action button {
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 8px;
+  background-color: white;
+}
+
+.jewelries {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.jewelries .jewelry {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4px;
+}
+
+.jewelry img {
+  width: 100%;
+  height: inherit;
+  transition: transform 0.5s ease-in-out;
+}
+
+.jewelry img:active {
+  transform: scale(1.2);
+}
+
+.jewelry .info {
+  padding: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.jewelry .info .price {
+  font-weight: bold;
+}
+
+.list .navigation {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.list .navigation button {
+  padding: 8px 28px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  margin: 8px;
+}
+
+.categories {
+  padding: 42px 42px 0px 42px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.category {
+  width: calc(50% - 8px);
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.category h1 {
+  color: white;
+  text-align: center;
+  position: relative;
+  bottom: 150px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.category button {
+  background-color: white;
+  border: 0px;
+  width: 100px;
+  height: 30px;
+  border-radius: 2px;
+  position: relative;
+  bottom: 130px;
+  left: 220px;
+}
+
+.branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.branding img {
+  width: 100%;
+}
+
+.brand-text {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  width: 60%;
+  position: relative;
+  bottom: 450px;
+}
+
+.brand-text h3 {
+  font-weight: normal;
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.branding button {
+  border: 0px;
+  background-color: white;
+  border-radius: 2px;
+  width: 160px;
+  height: 40px;
+  position: relative;
+  bottom: 420px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.site-map {
+  position: relative;
+  top: -170px;
+  padding: 0px 42px 42px 42px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.site-map div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.site-map div a {
+  text-decoration: none;
+  color: black;
+  margin-top: 12px;
+}
+
+.newslatter button {
+  background-color: white;
+  border: 1px solid black;
+  height: 32px;
+  width: 250px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 42px;
+  position: relative;
+  bottom: 150px;
+  font-size: 12px;
+  margin-right: 100;
+  height: 24px;
+}
+
+.footer .middle {
+  margin-right: 150px;
+}
+
+@media screen and (max-width: 768px) {
+  .jewelries {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .categories {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .category h1 {
+    bottom: 100px;
+  }
+
+  .category button {
+    left: 100px;
+    bottom: 80px;
+  }
+
+  .brand-text {
+    bottom: 300px;
+    font-size: 14px;
+  }
+
+  .branding button {
+    bottom: 250px;
+  }
+
+  .site-map {
+    font-size: 14px;
+    margin-top: 64px;
+  }
+}

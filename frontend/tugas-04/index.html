@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Belajar Tailwinds</title>
+
+    <!-- tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- font awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body class="font-sans">
+    <h1 class="text-center bg-black text-white p-2 text-xs">
+      The World's Richest Source Of Vitamin C. Bottled
+    </h1>
+
+    <header class="flex flex-row justify-between items-center px-6 py-4">
+      <span class="text-gray-500 text-xl">Zahabiya</span>
+
+      <nav class="flex gap-3">
+        <a href="#" target="_blank" rel="noopener noreferrer">Product</a>
+        <span>-</span>
+        <a href="#" target="_blank" rel="noopener noreferrer">Collection</a>
+        <span>-</span>
+        <a href="#" target="_blank" rel="noopener noreferrer">Services</a>
+        <span>-</span>
+        <a href="#" target="_blank" rel="noopener noreferrer">Stores</a>
+        <span>-</span>
+        <a href="#" target="_blank" rel="noopener noreferrer">About Us</a>
+      </nav>
+
+      <div class="flex gap-3">
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <i class="fa-solid fa-basket-shopping"></i>
+        </a>
+        <a href="#" target="_blank" rel="noopener noreferrer">
+          <i class="fa-regular fa-user"></i>
+        </a>
+      </div>
+    </header>
+
+    <hr />
+
+    <main">
+      <section class="flex justify-between px-6 py-4">
+        <div class="flex flex-col w-1/2 flex-nowrap">
+          <img src="img/ring.png" alt="ing" class="w-full h-3/4 rounded-xl" />
+          <div class="grid grid-cols-4 gap-4 mt-4 h-1/4">
+            <img src="img/ring.png" alt="ring" class="rounded-xl" />
+            <img src="img/ring.png" alt="ring" class="rounded-xl" />
+            <img src="img/ring.png" alt="ring" class="rounded-xl" />
+            <img src="img/ring.png" alt="ring" class="rounded-xl" />
+          </div>
+        </div>
+
+        <div class="flex flex-col justify-between w-1/2 px-6 pb-10">
+          <h3 class="text-lg">MEN'S</h3>
+
+          <h1 class="text-4xl">OVAL GEMSTONE SIGNET RING</h1>
+
+          <span>★★★★☆ 200k Review</span>
+
+          <p class="text-2xl mt-2">
+            $40,99 <span class="text-sm">tax included.</span>
+          </p>
+
+          <br />
+          <hr />
+
+          <div class="mt-2">
+            <div class="flex justify-between">
+              <h2 class="text-lg">DESCRIPTION</h2>
+              <i class="fa-solid fa-angle-up"></i>
+            </div>
+            <p class="text-sm text-justify mt-1">
+              This Signet's About To Be Your New Signature. It's An Approchable
+              Power Move, HandCrafted in Sterling Silver.
+            </p>
+            <hr class="mt-4" />
+          </div>
+
+          <div class="mt-2">
+            <div class="flex justify-between">
+              <h2 class="text-lg">Details</h2>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <hr class="mt-4" />
+          </div>
+
+          <div class="mt-2">
+            <div class="flex justify-between">
+              <h2 class="text-lg">Materials</h2>
+              <i class="fa-solid fa-angle-down"></i>
+            </div>
+            <hr class="mt-4" />
+          </div>
+
+          <div class="mt-8">
+            <h2>Colour:</h2>
+            <div class="flex justify-between gap-1 w-12 mt-1">
+              <div
+                class="w-5 h-full rounded-sm border border-solid border-black p-0.5 flex justify-center items-center"
+              >
+                <div class="bg-red-500 w-3 h-3 rounded-sm"></div>
+              </div>
+              <div
+                class="w-5 h-full rounded-sm active:border border-solid border-black p-0.5 flex justify-center items-center"
+              >
+                <div class="bg-gray-500 w-3 h-3 rounded-sm"></div>
+              </div>
+              <div
+                class="w-5 h-full rounded-sm active:border border-solid border-black p-0.5 flex justify-center items-center"
+              >
+                <div class="bg-teal-900 w-3 h-3 rounded-sm"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-between">
+            <div>
+              <h2>SIZE :</h2>
+              <div class="flex justify-between gap-1 mt-2">
+                <p
+                  class="w-16 h-8 rounded-md border border-black p-1 flex justify-center items-center"
+                >
+                  2 mm
+                </p>
+                <p
+                  class="w-16 h-8 rounded-md border border-black p-1 flex justify-center items-center"
+                >
+                  3.5 mm
+                </p>
+                <p
+                  class="w-16 h-8 rounded-md border border-black p-1 flex justify-center items-center"
+                >
+                  4 mm
+                </p>
+              </div>
+            </div>
+
+            <div>
+              <h2>LENGTH : <span class="text-xs">18" (SHORT)</span></h2>
+              <div class="flex justify-between gap-1 mt-2">
+                <p
+                  class="w-10 h-8 rounded-md border border-black p-1 flex justify-center items-center"
+                >
+                  18"
+                </p>
+                <p
+                  class="w-10 h-8 rounded-md border border-black p-1 flex justify-center items-center"
+                >
+                  20"
+                </p>
+                <p
+                  class="w-10 h-8 rounded-md border border-black p-1 flex justify-center items-center"
+                >
+                  22"
+                </p>
+                <p
+                  class="w-10 h-8 rounded-md border border-black p-1 flex justify-center items-center"
+                >
+                  24"
+                </p>
+                <p
+                  class="w-10 h-8 rounded-md border border-black p-1 flex justify-center items-center"
+                >
+                  26"
+                </p>
+                <p
+                  class="w-10 h-8 rounded-md border border-black p-1 flex justify-center items-center"
+                >
+                  28"
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-start items-center gap-2">
+            <h2>QUANTITY :</h2>
+            <div class="flex justify-between items-center gap-2">
+              <button class="text-xl">-</button>
+              <input
+                type="text"
+                name="quantity"
+                id="quantity"
+                min="0"
+                value="1"
+                class="w-4 text-center text-xl"
+              />
+              <button class="text-xl">+</button>
+            </div>
+          </div>
+
+          <div class="mt-8 grid grid-cols-2 gap-2">
+            <button class="border border-black rounded-md text-xl p-2">
+              ADD TO CART
+            </button>
+            <button class="bg-black text-white rounded-md text-xl p-2">
+              BUY NOW
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section class="px-12 mt-10">
+        <div class="flex justify-between items-end">
+          <div>
+            <h1 class="text-4xl">You may also like</h1>
+            <h3>Make every day special with alluring, high-quality jewelry.</h3>
+          </div>
+
+          <button class="border border-black rounded-md w-52 h-10 text-xl">View All Collection</button>
+        </div>
+
+        <div class="grid grid-cols-4 grid-rows-2 gap-4 mt-10">
+          <div>
+            <img src="img/ring.png" alt="ring" class="w-full h-auto rounded-md">
+            <div class="flex justify-between px-2">
+              <p class="text-xl">Victory Signet Ring</p>
+              <p class="text-xl font-bold">$ 193</p>
+            </div>
+          </div>
+          <div>
+            <img src="img/ring.png" alt="ring" class="w-full h-auto rounded-md">
+            <div class="flex justify-between px-2">
+              <p class="text-xl">Victory Signet Ring</p>
+              <p class="text-xl font-bold">$ 193</p>
+            </div>
+          </div>
+          <div>
+            <img src="img/ring.png" alt="ring" class="w-full h-auto rounded-md">
+            <div class="flex justify-between px-2">
+              <p class="text-xl">Victory Signet Ring</p>
+              <p class="text-xl font-bold">$ 193</p>
+            </div>
+          </div>
+          <div>
+            <img src="img/ring.png" alt="ring" class="w-full h-auto rounded-md">
+            <div class="flex justify-between px-2">
+              <p class="text-xl">Victory Signet Ring</p>
+              <p class="text-xl font-bold">$ 193</p>
+            </div>
+          </div>
+          <div>
+            <img src="img/ring.png" alt="ring" class="w-full h-auto rounded-md">
+            <div class="flex justify-between px-2">
+              <p class="text-xl">Victory Signet Ring</p>
+              <p class="text-xl font-bold">$ 193</p>
+            </div>
+          </div>
+          <div>
+            <img src="img/ring.png" alt="ring" class="w-full h-auto rounded-md">
+            <div class="flex justify-between px-2">
+              <p class="text-xl">Victory Signet Ring</p>
+              <p class="text-xl font-bold">$ 193</p>
+            </div>
+          </div>
+          <div>
+            <img src="img/ring.png" alt="ring" class="w-full h-auto rounded-md">
+            <div class="flex justify-between px-2">
+              <p class="text-xl">Victory Signet Ring</p>
+              <p class="text-xl font-bold">$ 193</p>
+            </div>
+          </div>
+          <div>
+            <img src="img/ring.png" alt="ring" class="w-full h-auto rounded-md">
+            <div class="flex justify-between px-2">
+              <p class="text-xl">Victory Signet Ring</p>
+              <p class="text-xl font-bold">$ 193</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mt-10 px-12 flex justify-between gap-4">
+        <div class="w-1/2 relative">
+          <img src="img/ring.png" alt="Jewelry" class="w-full" />
+          <h1 class="text-4xl text-center text-white p-2 bg-black opacity-50 absolute bottom-40 left-1/2 -translate-x-1/2">Engangement Rings</h1>
+          <button class="text-2xl px-4 py-2 bg-white absolute bottom-20 left-1/2 -translate-x-1/2">Shop Now</button>
+        </div>
+        <div class="w-1/2 relative">
+          <img src="img/ring.png" alt="Jewelry" class="w-full" />
+          <h1 class="text-4xl text-center text-white p-2 bg-black opacity-50 absolute bottom-40 left-1/2 -translate-x-1/2">Diamond Necklace</h1>
+          <button class="text-2xl px-4 py-2 bg-white absolute bottom-20 left-1/2 -translate-x-1/2">Shop Now</button>
+        </div>
+      </section>
+  
+      <section class="mt-20 relative">
+        <img src="img/ring.png" alt="Jewelry" class="w-full" style="height: 650px; object-fit: cover;" />
+        <div class="p-4 flex flex-col justify-center items-center absolute top-24 left-1/2 -translate-x-1/2 bg-black opacity-50 text-white">
+          <h3 class="text-lg">HUG FOR UNIVERSAL GOODNESS CREAM</h3>
+          <h1 class="text-7xl text-center">Fostering Water Sustainability While Celebrating Global Beauty.</h1>
+        </div>
+        <button class="absolute bottom-28 text-xl bg-white p-4 left-1/2 -translate-x-1/2 flex gap-8 items-center">
+          View Detail
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </section>
+  
+      <section class="flex justify-between mt-20 px-12 gap-4">
+        <h1 class="text-3xl text-gray-500">Zahabiya</h1>
+  
+        <div class="flex flex-col justify-start">
+          <h3 class="font-bold text-xl mb-4">My Pages</h3>
+          <a href="#">Earings</a>
+          <a href="#">Rings</a>
+          <a href="#">Necklaces</a>
+          <a href="#">Bracelets</a>
+          <a href="#">Men's</a>
+        </div>
+
+        <div class="flex flex-col justify-start">
+          <h3 class="font-bold text-xl mb-4">Company</h3>
+          <a href="#">Our Story</a>
+          <a href="#">Certified Organic</a>
+          <a href="#">Sustainability</a>
+          <a href="#">Blog</a>
+          <a href="#">Careers</a>
+          <a href="#">Affiliates</a>
+        </div>
+
+        <div class="flex flex-col justify-start">
+          <h3 class="font-bold text-xl mb-4">Customer Care</h3>
+          <a href="#">Shop</a>
+          <a href="#">FAQ</a>
+          <a href="#">Order Tracking</a>
+          <a href="#">Promotions</a>
+          <a href="#">Shipping</a>
+          <a href="#">Reviews</a>
+        </div>
+
+        <div class="flex flex-col justify-start">
+          <h3 class="font-bold text-xl mb-4">Join Our Newslatter</h3>
+          <button class="border border-black p-2 rounded-md flex gap-8 justify-between items-center">
+            Enter Your Email Address
+            <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </section>
+  
+      <footer class="mt-20 px-12 flex justify-between items-center mb-2">
+        <span>©2024 Zahabiya. All rights reserved.</span>
+        <span class="middle">Terms and Conditions</span>
+        <span>Privacy Policy</span>
+      </footer>
+    </main>
+  </body>
+</html>

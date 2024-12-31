@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function persegi(sisi) {
+        console.log(`Luas persegi: ${sisi * sisi} cm`);
+      }
+
+      function segitiga(alas, tinggi) {
+        console.log(`Luas segitiga: ${(alas * tinggi) / 2} cm`);
+      }
+
+      function lingkaran(r) {
+        console.log(`Luas lingkaran: ${3.14 * (r * r)} cm`);
+      }
+
+      function trapesium(t, a, b) {
+        console.log(`Luas trapesium: ${(t / 2) * (a + b)} cm`);
+      }
+
+      function layang2(d1, d2) {
+        console.log(`Luas layang-layang: ${(d1 * d2) / 2} cm`);
+      }
+
+      persegi(3);
+      segitiga(2, 3);
+      lingkaran(3);
+      trapesium(1, 2, 2);
+      layang2(2, 3);
+    </script>
+  </body>
+</html>

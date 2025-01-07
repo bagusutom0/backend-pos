@@ -15,23 +15,38 @@ export default function Header(props) {
       <div className="flex justify-between p-4">
         <h1 className="text-xl font-serif italic">Zahabiya</h1>
         <div className="flex justify-between gap-4">
-          <a className="hover:scale-105" href="#">
+          <a
+            className="transition delay-50 ease-in-out hover:scale-105"
+            href="#"
+          >
             Product
           </a>
           <span>-</span>
-          <a className="hover:scale-105" href="#">
+          <a
+            className="transition delay-50 ease-in-out hover:scale-105"
+            href="#"
+          >
             Collection
           </a>
           <span>-</span>
-          <a className="hover:scale-105" href="#">
+          <a
+            className="transition delay-50 ease-in-out hover:scale-105"
+            href="#"
+          >
             Services
           </a>
           <span>-</span>
-          <a className="hover:scale-105" href="#">
+          <a
+            className="transition delay-50 ease-in-out hover:scale-105"
+            href="#"
+          >
             Stores
           </a>
           <span>-</span>
-          <a className="hover:scale-105" href="#">
+          <a
+            className="transition delay-50 ease-in-out hover:scale-105"
+            href="#"
+          >
             About Us
           </a>
         </div>
@@ -41,8 +56,14 @@ export default function Header(props) {
             className="hover:scale-110"
             icon={faMagnifyingGlass}
           />
-          <FontAwesomeIcon className="hover:scale-110" icon={faCartShopping} />
-          <FontAwesomeIcon className="hover:scale-110" icon={faUser} />
+          <FontAwesomeIcon
+            className="hover:scale-110 transition delay-50 ease-in-out"
+            icon={faCartShopping}
+          />
+          <FontAwesomeIcon
+            className="hover:scale-110 transition delay-50 ease-in-out"
+            icon={faUser}
+          />
         </div>
       </div>
     </>

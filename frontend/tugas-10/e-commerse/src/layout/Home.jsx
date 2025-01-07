@@ -16,28 +16,52 @@ export default function Home(props) {
         style={{ height: 'calc(100vh - 84px' }}
       >
         <div className="flex justify-around backdrop-blur-sm bg-white/10 px-20 py-2 z-10">
-          <a className="text-lg text-white font-serif hover:scale-105" href="#">
+          <a
+            className="text-lg text-white font-serif hover:scale-105 transition delay-50 ease-in-out"
+            href="#"
+          >
             All Jewelry
           </a>
-          <a className="text-lg text-white font-serif hover:scale-105" href="#">
+          <a
+            className="text-lg text-white font-serif hover:scale-105 transition delay-50 ease-in-out"
+            href="#"
+          >
             New In
           </a>
-          <a className="text-lg text-white font-serif hover:scale-105" href="#">
+          <a
+            className="text-lg text-white font-serif hover:scale-105 transition delay-50 ease-in-out"
+            href="#"
+          >
             Best Sellers
           </a>
-          <a className="text-lg text-white font-serif hover:scale-105" href="#">
+          <a
+            className="text-lg text-white font-serif hover:scale-105 transition delay-50 ease-in-out"
+            href="#"
+          >
             Earings
           </a>
-          <a className="text-lg text-white font-serif hover:scale-105" href="#">
+          <a
+            className="text-lg text-white font-serif hover:scale-105 transition delay-50 ease-in-out"
+            href="#"
+          >
             Rings
           </a>
-          <a className="text-lg text-white font-serif hover:scale-105" href="#">
+          <a
+            className="text-lg text-white font-serif hover:scale-105 transition delay-50 ease-in-out"
+            href="#"
+          >
             Necklaces
           </a>
-          <a className="text-lg text-white font-serif hover:scale-105" href="#">
+          <a
+            className="text-lg text-white font-serif hover:scale-105 transition delay-50 ease-in-out"
+            href="#"
+          >
             Bracelets
           </a>
-          <a className="text-lg text-white font-serif hover:scale-105" href="#">
+          <a
+            className="text-lg text-white font-serif hover:scale-105 transition delay-50 ease-in-out"
+            href="#"
+          >
             Men's
           </a>
         </div>
@@ -68,7 +92,8 @@ export default function Home(props) {
       <div className="flex gap-4 justify-center mt-10">
         <div className="relative flex flex-col justify-center">
           <img
-            className="w-full h-full"
+            className="w-[650px]"
+            style={{ height: '65vh' }}
             src={jewelries[1].image}
             alt="Engangement Ring"
           />
@@ -81,7 +106,8 @@ export default function Home(props) {
         </div>
         <div className="relative flex flex-col justify-center">
           <img
-            className="w-full h-full"
+            className="w-[650px]"
+            style={{ height: '65vh' }}
             src={jewelries[2].image}
             alt="Diamond Necklace"
           />
@@ -99,7 +125,7 @@ export default function Home(props) {
         <img
           className="w-full object-cover"
           style={{ height: '80vh' }}
-          src={jewelries[3].image}
+          src={jewelries[2].image}
           alt="Earing"
         />
         <div className="w-[56%] h-[36%] backdrop-blur-sm bg-white/10 absolute top-40 left-1/2 -translate-x-1/2 text-center">
@@ -116,9 +142,6 @@ export default function Home(props) {
 
       {/* sitemap */}
       <SiteMap />
-
-      {/* footer */}
-      <Footer />
     </main>
   );
 }

@@ -22,7 +22,7 @@ export default function ListProduct(props) {
             <div className="border border-black rounded-md flex gap-2 p-2 h-8 items-center">
               <FontAwesomeIcon icon={faMagnifyingGlass} />
               <input
-                className="w-[200px] h-4"
+                className="w-[200px] h-4 focus:outline-none"
                 type="text"
                 placeholder="Search..."
               />

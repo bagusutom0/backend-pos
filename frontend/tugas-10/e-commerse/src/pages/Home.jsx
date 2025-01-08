@@ -3,7 +3,7 @@ import ListProduct from '../component/ListProduct';
 import jewelries from '../data/jewelries';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 import SiteMap from '../component/SiteMap';
-import Footer from '../component/Footer';
+import Footer from '../layout/Footer';
 
 export default function Home(props) {
   let dashboardImg = jewelries[0].image;

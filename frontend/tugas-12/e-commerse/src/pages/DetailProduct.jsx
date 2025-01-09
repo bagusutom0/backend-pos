@@ -10,9 +10,14 @@ import {
   faAngleUp,
   faArrowRight,
 } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
+import { useParams } from 'react-router';
 
 export default function DetailProduct(props) {
-  const [detailImage, setDetailImage] = useState(detailImages[0]);
+  const { id } = useParams();
+  const jewelry = jewelries.find((item) => item.id === Number(id));
+
+  const [detailImage, setDetailImage] = useState(jewelry.image[0]);
   const [quantity, setQuantity] = useState(1);
 
   function changeDetailImage(urlImage) {
@@ -31,8 +36,12 @@ export default function DetailProduct(props) {
     }
   }
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  });
+
   return (
-    <main>
+    <>
       {/* product description */}
       <section className="flex justify-between flex-col items-center md:flex-row px-6 py-4">
         {/* product photo */}
@@ -43,9 +52,9 @@ export default function DetailProduct(props) {
             className="w-full h-[530px] rounded-xl"
           />
           <div className="grid grid-cols-4 gap-4 mt-4 h-1/4">
-            {detailImages.map((tumbnailImage) => (
+            {jewelry.image.map((tumbnailImage) => (
               <img
-                key={tumbnailImage}
+                key={`tumbnailImage ${detailImages.indexOf(tumbnailImage)}`}
                 src={tumbnailImage}
                 alt="ring"
                 className="rounded-xl transition delay-75 ease-in-out hover:scale-105"
@@ -59,12 +68,12 @@ export default function DetailProduct(props) {
         <div className="flex flex-col justify-between md:w-1/2 md:px-6 pb-10 mt-10 md:mt-0">
           <h3 className="lg:text-lg md:text-xs">MEN'S</h3>
 
-          <h1 className="lg:text-4xl md:text-xl">OVAL GEMSTONE SIGNET RING</h1>
+          <h1 className="lg:text-4xl md:text-xl">{jewelry.name}</h1>
 
           <span className="lg:text-xl md:text-xs">★★★★☆ 200k Review</span>
 
           <p className="lg:text-2xl mt-2 md:text-lg">
-            $40,99 <span className="text-sm">tax included.</span>
+            {jewelry.price} <span className="text-sm">tax included.</span>
           </p>
 
           <br />
@@ -76,8 +85,7 @@ export default function DetailProduct(props) {
               <FontAwesomeIcon icon={faAngleUp} />
             </div>
             <p className="lg:text-sm text-justify mt-1 md:text-xs">
-              This Signet's About To Be Your New Signature. It's An Approchable
-              Power Move, HandCrafted in Sterling Silver.
+              {jewelry.description}
             </p>
             <hr className="mt-2 lg:mt-4" />
           </div>
@@ -103,15 +111,24 @@ export default function DetailProduct(props) {
             <div className="flex justify-between w-16 mt-1">
               <label className="flex items-center">
                 <input type="radio" name="option" className="hidden peer" />
-                <span className="w-4 h-4 bg-red-500 rounded-sm hover:border hover:border-black transition ease-in-out delay-75"></span>
+                <span
+                  className="w-4 h-4 rounded-sm hover:border hover:border-black transition ease-in-out delay-75"
+                  style={{ backgroundColor: jewelry.colour[0] }}
+                ></span>
               </label>
               <label className="flex items-center">
                 <input type="radio" name="option" className="hidden peer" />
-                <span className="w-4 h-4 bg-gray-500 rounded-sm hover:border hover:border-black transition ease-in-out delay-75"></span>
+                <span
+                  className="w-4 h-4  rounded-sm hover:border hover:border-black transition ease-in-out delay-75"
+                  style={{ backgroundColor: jewelry.colour[1] }}
+                ></span>
               </label>
               <label className="flex items-center">
                 <input type="radio" name="option" className="hidden peer" />
-                <span className="w-4 h-4 bg-teal-500 rounded-sm hover:border hover:border-black transition ease-in-out delay-75"></span>
+                <span
+                  className="w-4 h-4  rounded-sm hover:border hover:border-black transition ease-in-out delay-75"
+                  style={{ backgroundColor: jewelry.colour[2] }}
+                ></span>
               </label>
             </div>
           </div>
@@ -122,24 +139,14 @@ export default function DetailProduct(props) {
                 SIZE <span className="text-xs">(mm)</span> :
               </h2>
               <div className="flex justify-between gap-1 lg:gap-1 md:gap-0.5 md:mt-2">
-                <label className="flex items-center">
-                  <input type="radio" name="option" className="hidden peer" />
-                  <span className="w-10 text-center lg:w-14 md:w-10 lg:h-8 md:h-6 lg:text-sm md:text-[8px] rounded-md border border-black lg:p-1 md:p-0.5 flex justify-center items-center hover:bg-gray-100 transition ease-in-out delay-75">
-                    2
-                  </span>
-                </label>
-                <label className="flex items-center">
-                  <input type="radio" name="option" className="hidden peer" />
-                  <span className="w-10 text-center lg:w-14 md:w-10 lg:h-8 md:h-6 lg:text-sm md:text-[8px] rounded-md border border-black lg:p-1 md:p-0.5 flex justify-center items-center hover:bg-gray-100 transition ease-in-out delay-75">
-                    3.5
-                  </span>
-                </label>
-                <label className="flex items-center">
-                  <input type="radio" name="option" className="hidden peer" />
-                  <span className="w-10 text-center lg:w-14 md:w-10 lg:h-8 md:h-6 lg:text-sm md:text-[8px] rounded-md border border-black lg:p-1 md:p-0.5 flex justify-center items-center hover:bg-gray-100 transition ease-in-out delay-75">
-                    4
-                  </span>
-                </label>
+                {jewelry.size.map((size) => (
+                  <label className="flex items-center">
+                    <input type="radio" name="option" className="hidden peer" />
+                    <span className="w-10 text-center lg:w-14 md:w-10 lg:h-8 md:h-6 lg:text-sm md:text-[8px] rounded-md border border-black lg:p-1 md:p-0.5 flex justify-center items-center hover:bg-gray-100 transition ease-in-out delay-75">
+                      {size}
+                    </span>
+                  </label>
+                ))}
               </div>
             </div>
 
@@ -149,42 +156,14 @@ export default function DetailProduct(props) {
                 <span className="lg:text-xs md:text-[10px]">18" (SHORT)</span>
               </h2>
               <div className="flex justify-between gap-1 lg:gap-1 md:gap-0.5 md:mt-2">
-                <label className="flex items-center">
-                  <input type="radio" name="option" className="hidden peer" />
-                  <span className="lg:w-10 lg:h-8 w-7 md:w-6 md:h-6 lg:text-lg md:text-[8px] rounded-md border border-black lg:p-1 md:p-0.5 flex justify-center items-center hover:bg-gray-100 transition ease-in-out delay-75">
-                    18"
-                  </span>
-                </label>
-                <label className="flex items-center">
-                  <input type="radio" name="option" className="hidden peer" />
-                  <span className="lg:w-10 lg:h-8 w-7 md:w-6 md:h-6 lg:text-lg md:text-[8px] rounded-md border border-black lg:p-1 md:p-0.5 flex justify-center items-center hover:bg-gray-100 transition ease-in-out delay-75">
-                    20"
-                  </span>
-                </label>
-                <label className="flex items-center">
-                  <input type="radio" name="option" className="hidden peer" />
-                  <span className="lg:w-10 lg:h-8 w-7 md:w-6 md:h-6 lg:text-lg md:text-[8px] rounded-md border border-black lg:p-1 md:p-0.5 flex justify-center items-center hover:bg-gray-100 transition ease-in-out delay-75">
-                    22"
-                  </span>
-                </label>
-                <label className="flex items-center">
-                  <input type="radio" name="option" className="hidden peer" />
-                  <span className="lg:w-10 lg:h-8 w-7 md:w-6 md:h-6 lg:text-lg md:text-[8px] rounded-md border border-black lg:p-1 md:p-0.5 flex justify-center items-center hover:bg-gray-100 transition ease-in-out delay-75">
-                    24"
-                  </span>
-                </label>
-                <label className="flex items-center">
-                  <input type="radio" name="option" className="hidden peer" />
-                  <span className="lg:w-10 lg:h-8 w-7 md:w-6 md:h-6 lg:text-lg md:text-[8px] rounded-md border border-black lg:p-1 md:p-0.5 flex justify-center items-center hover:bg-gray-100 transition ease-in-out delay-75">
-                    26"
-                  </span>
-                </label>
-                <label className="flex items-center">
-                  <input type="radio" name="option" className="hidden peer" />
-                  <span className="lg:w-10 lg:h-8 w-7 md:w-6 md:h-6 lg:text-lg md:text-[8px] rounded-md border border-black lg:p-1 md:p-0.5 flex justify-center items-center hover:bg-gray-100 transition ease-in-out delay-75">
-                    28"
-                  </span>
-                </label>
+                {jewelry.length.map((length) => (
+                  <label className="flex items-center">
+                    <input type="radio" name="option" className="hidden peer" />
+                    <span className="lg:w-10 lg:h-8 w-7 md:w-6 md:h-6 lg:text-lg md:text-[8px] rounded-md border border-black lg:p-1 md:p-0.5 flex justify-center items-center hover:bg-gray-100 transition ease-in-out delay-75">
+                      {length}
+                    </span>
+                  </label>
+                ))}
               </div>
             </div>
           </div>
@@ -275,6 +254,6 @@ export default function DetailProduct(props) {
       </section>
 
       <SiteMap />
-    </main>
+    </>
   );
 }

@@ -7,8 +7,8 @@ export default function ProductCard(props) {
         className="w-full h-[200px] rounded-md drop-shadow"
       />
       <div className="flex justify-between lg:px-2 md:px-0 md:mt-1">
-        <p className="lg:text-xl md:text-xs">{props.name}</p>
-        <p className="lg:text-xl md:text-xs font-bold">$ {props.price}</p>
+        <p className="lg:text-base md:text-xs">{props.name}</p>
+        <p className="lg:text-base md:text-xs font-bold">$ {props.price}</p>
       </div>
     </div>
   );

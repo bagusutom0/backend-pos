@@ -7,6 +7,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import jewelries from '../data/jewelries';
 import ProductCard from './ProductCard';
+import { Link } from 'react-router';
 
 export default function ListProduct(props) {
   function showAction(properties) {
@@ -52,12 +53,13 @@ export default function ListProduct(props) {
 
       <div className="grid grid-cols-2 md:grid-cols-4 grid-rows-4 md:grid-rows-2 gap-4 lg:mt-10 mt-4">
         {jewelries.map((jewelry) => (
-          <ProductCard
-            key={jewelry.id}
-            image={jewelry.image}
-            name={jewelry.name}
-            price={jewelry.price}
-          />
+          <Link to={`/detail/${jewelry.id}`} key={jewelry.id}>
+            <ProductCard
+              image={jewelry.image}
+              name={jewelry.name}
+              price={jewelry.price}
+            />
+          </Link>
         ))}
       </div>
 

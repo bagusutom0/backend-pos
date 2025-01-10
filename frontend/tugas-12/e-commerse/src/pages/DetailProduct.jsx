@@ -36,9 +36,22 @@ export default function DetailProduct(props) {
     }
   }
 
+  function showRatings() {
+    let result = '';
+    for (let i = 0; i < jewelry.review[0]; i++) {
+      result += '★';
+    }
+
+    if (result.length < 5) {
+      result += '☆'.repeat(5 - result.length);
+    }
+
+    return result;
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  });
+  }, []);
 
   return (
     <>
@@ -54,7 +67,7 @@ export default function DetailProduct(props) {
           <div className="grid grid-cols-4 gap-4 mt-4 h-1/4">
             {jewelry.image.map((tumbnailImage) => (
               <img
-                key={`tumbnailImage ${detailImages.indexOf(tumbnailImage)}`}
+                key={`tumbnailImage ${jewelry.image.indexOf(tumbnailImage)}`}
                 src={tumbnailImage}
                 alt="ring"
                 className="rounded-xl transition delay-75 ease-in-out hover:scale-105"
@@ -70,10 +83,12 @@ export default function DetailProduct(props) {
 
           <h1 className="lg:text-4xl md:text-xl">{jewelry.name}</h1>
 
-          <span className="lg:text-xl md:text-xs">★★★★☆ 200k Review</span>
+          <span className="lg:text-xl md:text-xs">
+            {showRatings()} {jewelry.review[1]} Review
+          </span>
 
           <p className="lg:text-2xl mt-2 md:text-lg">
-            {jewelry.price} <span className="text-sm">tax included.</span>
+            ${jewelry.price} <span className="text-sm">tax included.</span>
           </p>
 
           <br />

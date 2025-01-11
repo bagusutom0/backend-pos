@@ -28,17 +28,27 @@ public class ProductService {
 
         if (categoryOptional.isPresent()) {
             Product product = new Product();
+            product.setImage(request.getImage());
             product.setName(request.getName());
-            product.setDescription(request.getDescription());
-            product.setStock(request.getStock());
             product.setPrice(request.getPrice());
+            product.setReview(request.getReview());
+            product.setDescription(request.getDescription());
+            product.setColour(request.getColour());
+            product.setSize(request.getSize());
+            product.setLength(request.getLength());
+            product.setStock(request.getStock());
             product.setCategory(categoryOptional.get());
             Product savedProduct = productRepository.save(product);
             return ProductDTO.builder()
                     .id(savedProduct.getId())
+                    .image(savedProduct.getImage())
                     .name(savedProduct.getName())
-                    .description(savedProduct.getDescription())
                     .price(savedProduct.getPrice())
+                    .review(savedProduct.getReview())
+                    .description(savedProduct.getDescription())
+                    .colour(savedProduct.getColour())
+                    .size(savedProduct.getSize())
+                    .length(savedProduct.getLength())
                     .stock(savedProduct.getStock())
                     .category(savedProduct.getCategory())
                     .build();
@@ -47,18 +57,46 @@ public class ProductService {
         }
     }
 
-    public List<ProductDTO> getAllPoducts() {
+    public List<ProductDTO> getAllProducts() {
         List<Product> products = productRepository.findAll();
         return products.stream()
                 .map(product -> ProductDTO.builder()
                         .id(product.getId())
+                        .image(product.getImage())
                         .name(product.getName())
-                        .description(product.getDescription())
                         .price(product.getPrice())
+                        .review(product.getReview())
+                        .description(product.getDescription())
+                        .colour(product.getColour())
+                        .size(product.getSize())
+                        .length(product.getLength())
                         .stock(product.getStock())
                         .category(product.getCategory())
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    public ProductDTO getProductById(Long id) {
+        Optional<Product> productOptional = productRepository.findById(id);
+
+        if (productOptional.isPresent()) {
+            Product product = productOptional.get();
+            return ProductDTO.builder()
+                    .id(product.getId())
+                    .image(product.getImage())
+                    .name(product.getName())
+                    .price(product.getPrice())
+                    .review(product.getReview())
+                    .description(product.getDescription())
+                    .colour(product.getColour())
+                    .size(product.getSize())
+                    .length(product.getLength())
+                    .stock(product.getStock())
+                    .category(product.getCategory())
+                    .build();
+        } else {
+            throw new EntityNotFoundException("Product not found");
+        }
     }
 
     public ProductDTO updateProduct(Long id, ProductRequest request) {
@@ -69,18 +107,28 @@ public class ProductService {
 
             if (categoryOptional.isPresent()) {
                 Product updatedProduct = productOptional.get();
+                updatedProduct.setImage(request.getImage());
                 updatedProduct.setName(request.getName());
-                updatedProduct.setDescription(request.getDescription());
-                updatedProduct.setStock(request.getStock());
                 updatedProduct.setPrice(request.getPrice());
+                updatedProduct.setReview(request.getReview());
+                updatedProduct.setDescription(request.getDescription());
+                updatedProduct.setColour(request.getColour());
+                updatedProduct.setSize(request.getSize());
+                updatedProduct.setLength(request.getLength());
+                updatedProduct.setStock(request.getStock());
                 updatedProduct.setCategory(categoryOptional.get());
 
                 Product savedProduct = productRepository.save(updatedProduct);
                 return ProductDTO.builder()
                         .id(savedProduct.getId())
+                        .image(savedProduct.getImage())
                         .name(savedProduct.getName())
-                        .description(savedProduct.getDescription())
                         .price(savedProduct.getPrice())
+                        .review(savedProduct.getReview())
+                        .description(savedProduct.getDescription())
+                        .colour(savedProduct.getColour())
+                        .size(savedProduct.getSize())
+                        .length(savedProduct.getLength())
                         .stock(savedProduct.getStock())
                         .category(savedProduct.getCategory())
                         .build();

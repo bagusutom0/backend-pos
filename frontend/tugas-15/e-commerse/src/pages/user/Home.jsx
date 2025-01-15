@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import ListProduct from '../component/ListProduct';
-import jewelry from '../assets/img/jewelry.png';
+import ListProduct from '../../component/ListProduct';
+import jewelry from '../../assets/img/jewelry.png';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
-import SiteMap from '../component/SiteMap';
+import SiteMap from '../../component/SiteMap';
 import { useEffect } from 'react';
 
 export default function Home(props) {

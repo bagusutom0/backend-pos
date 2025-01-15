@@ -1,8 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useState } from 'react';
-import ListProduct from '../component/ListProduct';
-import SiteMap from '../component/SiteMap';
-import jewelries from '../data/jewelries';
+import ListProduct from '../../component/ListProduct';
+import SiteMap from '../../component/SiteMap';
+import jewelries from '../../data/jewelries';
 import {
   faAngleDoubleDown,
   faAngleDown,
@@ -12,7 +12,7 @@ import {
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import useSWR from 'swr';
-import fetcher from '../data/api';
+import fetcher from '../../data/api';
 
 export default function DetailProduct(props) {
   const { id } = useParams();

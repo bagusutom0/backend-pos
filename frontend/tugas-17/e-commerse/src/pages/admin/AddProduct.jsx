@@ -1,8 +1,43 @@
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import useSWR, { mutate } from 'swr';
+import fetcher from '../../data/api';
+import { useNavigate } from 'react-router';
+import { useState } from 'react';
+import { Link } from 'react-router';
+import axios from 'axios';
 
 export default function AddProduct() {
+  const navigate = useNavigate();
+
+  // ambil list category
+  const {
+    data: dataCategory,
+    error,
+    isLoading,
+  } = useSWR(
+    ['get', '/category/all'],
+    ([method, path]) => fetcher(method, path),
+    { revalidateOnFocus: false, fallbackData: [] }
+  );
+
+  const addProduct = async (body) => {
+    const url = `${import.meta.env.VITE_BASE_URL}/product/add`;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
+        'Content-Type': 'application/json',
+      },
+    };
+
+    try {
+      const response = await axios.post(url, body, config);
+    } catch (error) {
+      console.error('Error adding data:', error.message);
+    }
+  };
+
   const scheme = yup.object().shape({
     name: yup.string().required('Name is required'),
     image: yup
@@ -45,41 +80,52 @@ export default function AddProduct() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(scheme) });
 
-  const onSubmitForm = (data) => {
-    data.image = data.image
-      .split(',')
-      .map((item) => item.trim())
-      .filter((item) => item !== '');
+  const onSubmitForm = (product) => {
+    const category = dataCategory.find(
+      (category) => category.name === product.category
+    );
 
-    data.colour = data.colour
-      .split(',')
-      .map((item) => item.trim())
-      .filter((item) => item !== '');
+    if (category) {
+      product.image = product.image
+        .split(',')
+        .map((item) => item.trim())
+        .filter((item) => item !== '');
 
-    data.size = data.size
-      .split(',')
-      .map((item) => item.trim())
-      .filter((item) => item !== '');
+      product.colour = product.colour
+        .split(',')
+        .map((item) => item.trim())
+        .filter((item) => item !== '');
 
-    data.length = data.length
-      .split(',')
-      .map((item) => item.trim())
-      .filter((item) => item !== '');
+      product.size = product.size
+        .split(',')
+        .map((item) => item.trim())
+        .filter((item) => item !== '');
 
-    data.price = Number(data.price);
-    data.stock = Number(data.stock);
+      product.length = product.length
+        .split(',')
+        .map((item) => item.trim())
+        .filter((item) => item !== '');
 
-    console.log(data);
+      product.price = Number(product.price);
+      product.stock = Number(product.stock);
+
+      let requestData = { ...product };
+      delete requestData.category;
+      requestData.categoryId = category.id;
+      addProduct(requestData);
+
+      navigate('/admin');
+    }
   };
 
   return (
-    <div className="flex flex-col p-4">
+    <div className="flex flex-col p-4 items-center">
       <h1 className="text-xl font-bold text-center">Add Product</h1>
       <form
-        className="mt-4 gap-4 flex flex-col items-center p-4"
+        className="mt-4 gap-4 flex flex-col items-center p-4 w-1/2"
         onSubmit={handleSubmit(onSubmitForm)}
       >
-        <div className="w-1/2">
+        <div className="w-full">
           <label className="text-lg" htmlFor="name">
             Name
           </label>
@@ -92,20 +138,24 @@ export default function AddProduct() {
           <p className="text-red-500">{errors.name?.message}</p>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-full">
           <label className="text-lg" htmlFor="category">
             Category
           </label>
-          <input
-            placeholder="Category"
-            className="w-full rounded-md border border-gray-300 p-4 pe-12 focus:outline-gray-300"
+          <select
             id="category"
-            {...register('category')}
-          />
+            className="w-full rounded-md border border-gray-300 p-4 focus:outline-gray-300"
+          >
+            {dataCategory.map((category) => (
+              <option key={category.id} {...register('category')}>
+                {category.name}
+              </option>
+            ))}
+          </select>
           <p className="text-red-500">{errors.category?.message}</p>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-full">
           <label className="text-lg" htmlFor="description">
             Description
           </label>
@@ -118,7 +168,7 @@ export default function AddProduct() {
           <p className="text-red-500">{errors.description?.message}</p>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-full">
           <label className="text-lg" htmlFor="image">
             Image
           </label>
@@ -131,7 +181,7 @@ export default function AddProduct() {
           <p className="text-red-500">{errors.image?.message}</p>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-full">
           <label className="text-lg" htmlFor="colour">
             Colour <span className="text-sm">(colour in hexadecimal)</span>
           </label>
@@ -144,7 +194,7 @@ export default function AddProduct() {
           <p className="text-red-500">{errors.colour?.message}</p>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-full">
           <label className="text-lg" htmlFor="size">
             Size
           </label>
@@ -157,7 +207,7 @@ export default function AddProduct() {
           <p className="text-red-500">{errors.size?.message}</p>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-full">
           <label className="text-lg" htmlFor="length">
             Length
           </label>
@@ -170,7 +220,7 @@ export default function AddProduct() {
           <p className="text-red-500">{errors.length?.message}</p>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-full">
           <label className="text-lg" htmlFor="price">
             Price
           </label>
@@ -183,7 +233,7 @@ export default function AddProduct() {
           <p className="text-red-500">{errors.price?.message}</p>
         </div>
 
-        <div className="w-1/2">
+        <div className="w-full">
           <label className="text-lg" htmlFor="stock">
             Stock
           </label>
@@ -200,6 +250,12 @@ export default function AddProduct() {
           Add Product
         </button>
       </form>
+
+      <Link to={'/admin'}>
+        <button className="mt-4 w-32 bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          Back
+        </button>
+      </Link>
     </div>
   );
 }

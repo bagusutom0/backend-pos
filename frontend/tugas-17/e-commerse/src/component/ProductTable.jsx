@@ -1,6 +1,52 @@
-import { Link } from 'react-router';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router';
+import useSWR, { mutate } from 'swr';
+import fetcher from '../data/api';
+import axios from 'axios';
 
-export default function ProductTable({ data }) {
+export default function ProductTable() {
+  const navigate = useNavigate();
+  const [shouldDelete, setShouldDelete] = useState(false);
+  const [requestPath, setRequestPath] = useState('');
+
+  const path = '/product/all';
+  const method = 'get';
+  const { data, error, isLoading, mutate } = useSWR(
+    () => [method, path],
+    ([method, path]) => fetcher(method, path)
+  );
+
+  if (isLoading)
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-black"></div>
+      </div>
+    );
+
+  if (error) return <div>Error: {error.message}</div>;
+
+  const onDelete = (id) => {
+    const deleteData = async () => {
+      const url = `${import.meta.env.VITE_BASE_URL}/product/delete/${id}`;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+      };
+
+      try {
+        const response = await axios.delete(url, config);
+        mutate();
+      } catch (error) {
+        console.error('Error deleting data:', error);
+      } finally {
+      }
+    };
+
+    deleteData();
+  };
+
   return (
     <div className="w-full p-4 mt-8 flex flex-col items-end bg-black/5 shadow-black relative">
       <p className="absolute left-1/2 -translate-x-1/2 text-xl font-semibold">
@@ -13,7 +59,7 @@ export default function ProductTable({ data }) {
         </button>
       </Link>
 
-      <table className="table table-auto border border-gray-200 mt-4">
+      <table className="table table-auto border border-gray-200 mt-4 w-full">
         <thead>
           <tr className="bg-gray-300">
             <th className="border border-gray-300 px-4 py-2">ID</th>
@@ -80,10 +126,15 @@ export default function ProductTable({ data }) {
                 {jewelry.size.join(', ')}
               </td>
               <td className="border border-gray-200 px-4 py-2 gap-2 flex flex-col">
-                <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600">
-                  Edit
-                </button>
-                <button className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600">
+                <Link to={`/admin/product/edit/${jewelry.id}`}>
+                  <button className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-600 w-full">
+                    Edit
+                  </button>
+                </Link>
+                <button
+                  className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600"
+                  onClick={() => onDelete(jewelry.id)}
+                >
                   Delete
                 </button>
               </td>

@@ -5,19 +5,13 @@ import ProductTable from '../../component/ProductTable';
 
 export default function Admin(props) {
   const [activeTab, setActiveTab] = useState('product'); // Added useState for activeTab
-  const path = '/product/all';
-  const method = 'get';
-  const { data, error, isLoading } = useSWR(
-    () => [method, path],
-    ([method, path]) => fetcher(method, path)
-  );
 
   const renderContent = () => {
     switch (activeTab) {
       case 'category':
         return <div className="mt-4">category</div>;
       case 'product':
-        return <ProductTable data={data} />;
+        return <ProductTable />;
       case 'transaction':
         return <div className="mt-4">Transaction</div>;
       default:
@@ -27,20 +21,7 @@ export default function Admin(props) {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
-    if (data) {
-      console.log(data);
-    }
-  }, [data]);
-
-  if (isLoading)
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <div className="w-16 h-16 border-4 border-dashed rounded-full animate-spin border-black"></div>
-      </div>
-    );
-
-  if (error) return <div>Error: {error.message}</div>;
+  }, []);
 
   return (
     <div>

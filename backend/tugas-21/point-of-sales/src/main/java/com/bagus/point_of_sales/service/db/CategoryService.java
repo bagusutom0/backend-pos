@@ -40,6 +40,13 @@ public class CategoryService {
                 .collect(Collectors.toList());
     }
 
+    public CategoryDTO getCategoryByName(String name) {
+        Category category = categoryRepository.findByName(name)
+                .orElseThrow(() -> new EntityNotFoundException("Category not found"));
+
+        return CategoryDTO.builder().id(category.getId()).name(category.getName()).build();
+    }
+
     public CategoryDTO updateCategoryName(Long id, CategoryRequest request) {
         Optional<Category> categoryOptional = categoryRepository.findById(id);
 

@@ -31,7 +31,7 @@ public class ProductService {
             product.setImage(request.getImage());
             product.setName(request.getName());
             product.setPrice(request.getPrice());
-            product.setReview(request.getReview());
+            product.setReview(List.of("0", "0"));
             product.setDescription(request.getDescription());
             product.setColour(request.getColour());
             product.setSize(request.getSize());
@@ -110,7 +110,6 @@ public class ProductService {
                 updatedProduct.setImage(request.getImage());
                 updatedProduct.setName(request.getName());
                 updatedProduct.setPrice(request.getPrice());
-                updatedProduct.setReview(request.getReview());
                 updatedProduct.setDescription(request.getDescription());
                 updatedProduct.setColour(request.getColour());
                 updatedProduct.setSize(request.getSize());

@@ -1,6 +1,5 @@
 package com.bagus.point_of_sales.controller.db.product;
 
-import com.bagus.point_of_sales.model.product.Category;
 import com.bagus.point_of_sales.service.db.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +20,12 @@ public class CategoryController {
     @GetMapping("/all")
     public ResponseEntity<List<CategoryDTO>> getAllCategory() {
         return ResponseEntity.ok(service.getAllCategories());
+    }
+
+    @Secured({"ROLE_CASHIER", "ROLE_MANAGER"})
+    @GetMapping("/{name}")
+    public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable String name) {
+        return ResponseEntity.ok(service.getCategoryByName(name));
     }
 
     @Secured("ROLE_MANAGER")

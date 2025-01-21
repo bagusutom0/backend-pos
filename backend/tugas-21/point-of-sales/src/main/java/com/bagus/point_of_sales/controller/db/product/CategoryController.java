@@ -16,7 +16,6 @@ import java.util.Map;
 public class CategoryController {
     private final CategoryService service;
 
-    @Secured({"ROLE_CASHIER", "ROLE_MANAGER"})
     @GetMapping("/all")
     public ResponseEntity<List<CategoryDTO>> getAllCategory() {
         return ResponseEntity.ok(service.getAllCategories());

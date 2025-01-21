@@ -16,7 +16,6 @@ import java.util.Map;
 public class ProductController {
     private final ProductService service;
 
-    @Secured({"ROLE_CASHIER", "ROLE_MANAGER"})
     @GetMapping("/all")
     public ResponseEntity<List<ProductDTO>> getAllProducts () {
         return ResponseEntity.ok(service.getAllProducts());

@@ -10,18 +10,23 @@ const cartSlice = createSlice({
   reducers: {
     addItem: (state, action) => {
       const id = action.payload.id;
-      const existingItem = state.dataCart.find((item) => item.id === id);
+      const existingItem = state.dataCart.find(
+        (item) => item.product.id === id
+      );
+
+      console.log('id', id);
+      console.log('payload', action.payload);
 
       if (existingItem) {
         state.dataCart.forEach((item) => {
-          if (item.id === id) {
+          if (item.product.id === id) {
             item.quantity += 1;
             item.price = item.product.price * item.quantity;
           }
         });
       } else {
         state.dataCart.push({
-          product: action.payload,
+          product: { ...action.payload },
           quantity: 1,
           price: action.payload.price,
         });
@@ -29,11 +34,13 @@ const cartSlice = createSlice({
     },
     increaseQuantity(state, action) {
       const id = action.payload.id;
-      const existingItem = state.dataCart.find((item) => item.id === id);
+      const existingItem = state.dataCart.find(
+        (item) => item.product.id === id
+      );
 
       if (existingItem) {
         state.dataCart.forEach((item) => {
-          if (item.id === id) {
+          if (item.product.id === id) {
             item.quantity += 1;
             item.price = item.product.price * item.quantity;
           }
@@ -42,13 +49,17 @@ const cartSlice = createSlice({
     },
     decreaseQuantity(state, action) {
       const id = action.payload.id;
-      const existingItem = state.dataCart.find((item) => item.id === id);
+      const existingItem = state.dataCart.find(
+        (item) => item.product.id === id
+      );
 
       if (existingItem) {
         state.dataCart.forEach((item) => {
-          if (item.id === id) {
+          if (item.product.id === id) {
             if (item.quantity - 1 === 0) {
-              state.dataCart = state.dataCart.filter((item) => item.id !== id);
+              state.dataCart = state.dataCart.filter(
+                (item) => item.product.id !== id
+              );
             } else {
               item.quantity -= 1;
               item.price = item.product.price * item.quantity;
@@ -59,7 +70,7 @@ const cartSlice = createSlice({
     },
     deleteItem(state, action) {
       const id = action.payload.id;
-      state.dataCart = state.dataCart.filter((item) => item.id !== id);
+      state.dataCart = state.dataCart.filter((item) => item.product.id !== id);
     },
   },
 });

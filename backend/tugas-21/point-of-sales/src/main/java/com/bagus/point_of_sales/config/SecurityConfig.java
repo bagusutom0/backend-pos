@@ -25,6 +25,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request -> request
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers("/api/v1/pgw/**").permitAll()
+                        .requestMatchers("/api/v1/category/all").permitAll()
+                        .requestMatchers("/api/v1/product/all").permitAll()
                         .requestMatchers("/api/v1/transaction/payment").permitAll()
                         .anyRequest().authenticated()
                 )

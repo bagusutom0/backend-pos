@@ -53,7 +53,7 @@
       "categoryId": 1
    }
 
-## tugas 15:
+## tugas 15, 16, 17, 19, 20:
 1. Jalankan Project
    ```bash
    mvn spring-boot:run

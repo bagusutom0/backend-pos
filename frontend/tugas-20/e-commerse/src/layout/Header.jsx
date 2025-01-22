@@ -15,18 +15,10 @@ export default function Header(props) {
   const dispatch = useDispatch();
   const { token } = useSelector((state) => state.auth);
 
-  const [isLogin, setIsLogin] = useState(false);
-
   const onLogOut = () => {
     dispatch(resetAuthData());
     setIsLogin(false);
   };
-
-  useEffect(() => {
-    setIsLogin(!!token);
-
-    console.log('token', token);
-  }, [token]);
 
   return (
     <>
@@ -86,7 +78,7 @@ export default function Header(props) {
               icon={faCartShopping}
             />
           </Link>
-          {isLogin ? (
+          {token !== '' ? (
             <FontAwesomeIcon
               className="hover:scale-110 transition delay-50 ease-in-out"
               icon={faRightFromBracket}

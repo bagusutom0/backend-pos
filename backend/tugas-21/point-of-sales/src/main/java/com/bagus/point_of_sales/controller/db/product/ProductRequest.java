@@ -5,15 +5,9 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class ProductRequest {
-    private List<String> image;
+public class  ProductRequest {
     private String name;
+    private String image;
     private Long price;
-    private List<String> review;
-    private String description;
-    private List<String> colour;
-    private List<String> size;
-    private List<String> length;
-    private int stock;
     private Long categoryId;
 }

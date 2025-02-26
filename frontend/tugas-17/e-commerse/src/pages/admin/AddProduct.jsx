@@ -135,7 +135,7 @@ export default function AddProduct() {
             id="name"
             {...register('name')}
           />
-          <p className="text-red-500">{errors.name?.message}</p>
+          {errors.name && <p>{errors.name?.message}</p>}
         </div>
 
         <div className="w-full">

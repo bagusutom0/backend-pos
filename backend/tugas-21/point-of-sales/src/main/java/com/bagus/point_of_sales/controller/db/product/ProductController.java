@@ -3,7 +3,6 @@ package com.bagus.point_of_sales.controller.db.product;
 import com.bagus.point_of_sales.service.db.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -17,23 +16,25 @@ public class ProductController {
     private final ProductService service;
 
     @GetMapping("/all")
-    public ResponseEntity<List<ProductDTO>> getAllProducts () {
-        return ResponseEntity.ok(service.getAllProducts());
+    public ResponseEntity<List<ProductDTO>> getAllProducts (
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) Long category_id,
+            @RequestParam(required = false) String sort_by,
+            @RequestParam(required = false) String sort_order
+    ) {
+        return ResponseEntity.ok(service.getAllProducts(name, category_id, sort_by, sort_order));
     }
 
-    @Secured({"ROLE_CASHIER", "ROLE_MANAGER"})
     @GetMapping("/{id}")
     public ResponseEntity<ProductDTO> getProductById (@PathVariable Long id) {
         return ResponseEntity.ok(service.getProductById(id));
     }
 
-    @Secured("ROLE_MANAGER")
     @PostMapping("/add")
     public ResponseEntity<ProductDTO> addProduct(@RequestBody ProductRequest request) {
         return ResponseEntity.ok(service.addProduct(request));
     }
 
-    @Secured("ROLE_MANAGER")
     @PutMapping("/update/{id}")
     public ResponseEntity<ProductDTO> updateProduct(
             @PathVariable Long id,
@@ -42,7 +43,6 @@ public class ProductController {
         return ResponseEntity.ok(service.updateProduct(id, request));
     }
 
-    @Secured("ROLE_MANAGER")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Map<String, String>> deleteProduct(@PathVariable Long id) {
         service.deleteProduct(id);

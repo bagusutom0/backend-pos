@@ -16,15 +16,12 @@ public class Product {
     @Id
     @GeneratedValue
     private Long id;
-    private List<String> image;
     private String name;
+
+    @Column(columnDefinition = "TEXT")
+    private String image;
+
     private Long price;
-    private List<String> review;
-    private String description;
-    private List<String> colour;
-    private List<String> size;
-    private List<String> length;
-    private int stock;
 
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)

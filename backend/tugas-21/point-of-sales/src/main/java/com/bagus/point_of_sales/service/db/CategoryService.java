@@ -4,11 +4,13 @@ import com.bagus.point_of_sales.controller.db.product.CategoryDTO;
 import com.bagus.point_of_sales.controller.db.product.CategoryRequest;
 import com.bagus.point_of_sales.model.product.Category;
 import com.bagus.point_of_sales.model.product.CategoryRepository;
+import com.bagus.point_of_sales.model.product.Product;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -22,10 +24,12 @@ public class CategoryService {
     public CategoryDTO addCategory(CategoryRequest request) {
         Category category = new Category();
         category.setName(request.getName());
+        category.setProducts(new ArrayList<Product>());
         Category savedCategory = categoryRepository.save(category);
         return CategoryDTO.builder()
                 .id(savedCategory.getId())
                 .name(savedCategory.getName())
+                .totalRelatedProducts(0L)
                 .build();
     }
 
@@ -35,6 +39,7 @@ public class CategoryService {
                 .map(category -> CategoryDTO.builder()
                         .id(category.getId())
                         .name(category.getName())
+                        .totalRelatedProducts((long) category.getProducts().size())
                         .build()
                 )
                 .collect(Collectors.toList());

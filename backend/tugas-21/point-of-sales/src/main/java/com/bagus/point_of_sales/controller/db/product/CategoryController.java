@@ -21,19 +21,16 @@ public class CategoryController {
         return ResponseEntity.ok(service.getAllCategories());
     }
 
-    @Secured({"ROLE_CASHIER", "ROLE_MANAGER"})
     @GetMapping("/{name}")
     public ResponseEntity<CategoryDTO> getCategoryById(@PathVariable String name) {
         return ResponseEntity.ok(service.getCategoryByName(name));
     }
 
-    @Secured("ROLE_MANAGER")
     @PostMapping("/add")
     public ResponseEntity<CategoryDTO> addCategory(@RequestBody CategoryRequest request) {
         return ResponseEntity.ok(service.addCategory(request));
     }
 
-    @Secured("ROLE_MANAGER")
     @PutMapping("/update/{id}")
     public ResponseEntity<CategoryDTO> updateCategory(
             @PathVariable Long id,
@@ -42,7 +39,6 @@ public class CategoryController {
         return ResponseEntity.ok(service.updateCategoryName(id, request));
     }
 
-    @Secured("ROLE_MANAGER")
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<Map<String, String>> deleteCategory(@PathVariable Long id) {
         service.deleteCategory(id);

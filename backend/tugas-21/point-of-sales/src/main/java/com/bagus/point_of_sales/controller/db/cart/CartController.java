@@ -8,9 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
-import java.util.List;
-
 @RestController
 @RequestMapping("api/v1/cart")
 @RequiredArgsConstructor
@@ -29,11 +26,11 @@ public class CartController {
         return ResponseEntity.ok(service.getCart(request));
     }
 
-    @Secured("ROLE_CASHIER")
-    @PostMapping("/add")
-    public ResponseEntity<CartDTO> addCartProduct(@RequestBody AddProductRequest request) {
-        return ResponseEntity.ok(service.addProductToCart(request));
-    }
+//    @Secured("ROLE_CASHIER")
+//    @PostMapping("/add")
+//    public ResponseEntity<CartDTO> addCartProduct(@RequestBody AddProductRequest request) {
+//        return ResponseEntity.ok(service.addProductToCart(request));
+//    }
 
     @Secured("ROLE_CASHIER")
     @PutMapping("/update")
@@ -47,11 +44,11 @@ public class CartController {
         return ResponseEntity.ok(service.deleteProduct(request));
     }
 
-    @Secured("ROLE_CASHIER")
-    @PostMapping("/checkout")
-    public ResponseEntity<CartDTO> checkout(@RequestBody CheckoutRequest request) {
-        return ResponseEntity.ok(service.checkout(request));
-    }
+//    @Secured("ROLE_CASHIER")
+//    @PostMapping("/checkout")
+//    public ResponseEntity<CartDTO> checkout(@RequestBody CheckoutRequest request) {
+//        return ResponseEntity.ok(service.checkout(request));
+//    }
 
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ApiError> handleContentNotAllowedException(IllegalArgumentException illegalArgumentException) {

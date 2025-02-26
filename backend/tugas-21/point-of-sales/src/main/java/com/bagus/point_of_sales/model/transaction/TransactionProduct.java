@@ -2,14 +2,12 @@ package com.bagus.point_of_sales.model.transaction;
 
 import com.bagus.point_of_sales.model.product.Product;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Table
-@Data
+@Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -27,5 +25,5 @@ public class TransactionProduct {
     private Product product;
 
     private int quantity;
-    private Long price;
+    private Long subtotal;
 }

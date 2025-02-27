@@ -4,8 +4,8 @@ services:
     container_name: spring_app
     restart: always
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://render_host.render_region-postgres.render.com/point_of_sales
-      SPRING_DATASOURCE_USERNAME: render_db_user
-      SPRING_DATASOURCE_PASSWORD: render_db_password
+      SPRING_DATASOURCE_URL: jdbc:postgresql://(render hostname).(render region)-postgres.render.com/point_of_sales
+      SPRING_DATASOURCE_USERNAME: (render user)
+      SPRING_DATASOURCE_PASSWORD: (render password)
     ports:
       - "8080:8080"

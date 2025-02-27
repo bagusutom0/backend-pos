@@ -3,7 +3,7 @@ package com.bagus.point_of_sales.controller.db.product;
 import com.bagus.point_of_sales.service.db.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
+//import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;

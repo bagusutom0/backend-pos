@@ -5,7 +5,6 @@ import com.bagus.point_of_sales.service.db.CartService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -14,13 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class CartController {
     private final CartService service;
 
-    @Secured("ROLE_CASHIER")
-    @GetMapping("/open")
-    public ResponseEntity<CartDTO> openCart(@RequestHeader(name = "Authorization") String authHeader) {
-        return ResponseEntity.ok(service.openCart(authHeader));
-    }
+//    @GetMapping("/open")
+//    public ResponseEntity<CartDTO> openCart(@RequestHeader(name = "Authorization") String authHeader) {
+//        return ResponseEntity.ok(service.openCart(authHeader));
+//    }
 
-    @Secured("ROLE_CASHIER")
     @GetMapping("/products")
     public ResponseEntity<CartDTO> getCartProducts(@RequestBody CartProductRequest request) {
         return ResponseEntity.ok(service.getCart(request));
@@ -32,13 +29,11 @@ public class CartController {
 //        return ResponseEntity.ok(service.addProductToCart(request));
 //    }
 
-    @Secured("ROLE_CASHIER")
     @PutMapping("/update")
     public ResponseEntity<CartDTO> updateCart(@RequestBody UpdateProductRequest request) {
         return ResponseEntity.ok(service.updateProduct(request));
     }
 
-    @Secured("ROLE_CASHIER")
     @DeleteMapping("/delete")
     public ResponseEntity<CartDTO> deleteCart(@RequestBody DeleteProductRequest request) {
         return ResponseEntity.ok(service.deleteProduct(request));

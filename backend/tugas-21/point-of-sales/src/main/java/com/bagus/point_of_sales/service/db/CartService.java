@@ -7,7 +7,6 @@ import com.bagus.point_of_sales.model.cart.CartProduct;
 import com.bagus.point_of_sales.model.cart.CartRepository;
 import com.bagus.point_of_sales.model.user.User;
 import com.bagus.point_of_sales.model.user.UserRepository;
-import com.bagus.point_of_sales.service.auth.JwtService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -25,34 +24,32 @@ public class CartService {
 //    private final CartProductRepository cartProductRepository;
 //    private final ProductRepository productRepository;
     private final UserRepository userRepository;
-    private final JwtService jwtService;
 //    private final TransactionRepository transactionRepository;
 //    private final TransactionProductRepository transactionProductRepository;
 //    private final PGWRepository pgwRepository;
 
-    public CartDTO openCart(String authHeader) {
-        String token = authHeader.substring(7);
-        String username = jwtService.extractUsername(token);
-        Optional<User> userOpt = userRepository.findByUsername(username);
-
-        if (userOpt.isPresent()) {
-            User user = userOpt.get();
-
-            Cart cart = new Cart();
-            cart.setCartProducts(List.of());
-            cart.setTotalPrice(0L);
-            cart.setUser(user);
-            Cart savedCart = cartRepository.save(cart);
-            return CartDTO.builder()
-                    .id(savedCart.getId())
-                    .cartProducts(Collections.emptyList())
-                    .totalPrice(0L)
-                    .user(new CartDTO.UserDTO(user))
-                    .build();
-        } else {
-            throw new EntityNotFoundException("User not found");
-        }
-    }
+//    public CartDTO openCart(String authHeader) {
+//        String token = authHeader.substring(7);
+//        Optional<User> userOpt = userRepository.findByUsername(username);
+//
+//        if (userOpt.isPresent()) {
+//            User user = userOpt.get();
+//
+//            Cart cart = new Cart();
+//            cart.setCartProducts(List.of());
+//            cart.setTotalPrice(0L);
+//            cart.setUser(user);
+//            Cart savedCart = cartRepository.save(cart);
+//            return CartDTO.builder()
+//                    .id(savedCart.getId())
+//                    .cartProducts(Collections.emptyList())
+//                    .totalPrice(0L)
+//                    .user(new CartDTO.UserDTO(user))
+//                    .build();
+//        } else {
+//            throw new EntityNotFoundException("User not found");
+//        }
+//    }
 
 //    public CartDTO addProductToCart(AddProductRequest request) {
 //        Cart cart = cartRepository.findById(request.getCartId())

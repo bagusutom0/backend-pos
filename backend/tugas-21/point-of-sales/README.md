@@ -1,99 +1,68 @@
-# Cara run project
+# Dapur Emmak (Backend)
 
-## base url: http://localhost:8080/api/v1
+## Overview
+This project serves as the backend service for the Dapur Emmak web application, built with Java Spring Boot and PostgreSQL hosted in Render as the backend. It Provides some essential services for Point of Sales (POS) system. enabling efficient management of sales transactions and inventory. Key features of this backend included:
+1. CRUD operation for managing resources
+2. Searching, filtering, and sorting for optimiezed data retrieval
 
-## tugas 13: 
-1. Jalankan Project
-   ```bash
-   mvn spring-boot:run
-   ```
+## Technology
+Technologies used in this project:
+1. Spring Boot
+2. PostgreSQL
+3. Docker
 
-## tugas 14:
-1. Jalankan Project
-   ```bash
-   mvn spring-boot:run
-   ```
+## Installation & Setup
+How to run this project:
+1. Replace the URL, username, and password in the docker-compose.yaml with your own
+```
+   services:
+     app:
+       build: .
+       container_name: spring_app
+       restart: always
+       environment:
+         SPRING_DATASOURCE_URL: jdbc:postgresql://(render hostname).(render region)-postgres.render.com/point_of_sales
+         SPRING_DATASOURCE_USERNAME: (render user)
+         SPRING_DATASOURCE_PASSWORD: (render password)
+       ports:
+         - "8080:8080"
+```
 
-2. Gunakan endpoint /register dengan contoh body:
-   ```json
-   {
-      "name": "manager",
-      "role": "MANAGER",`
-      "username": "manager",
-      "password": "manager"
-   }
-   ```
+2. Build application
+```bash
+   mvn clean package -DskipTests
+```
 
-3. Salin token yang dihasilkan dari proses register manager.
+3. Run application in Docker
+```bash
+   docker-compose up -d
+```
 
-4. Gunakan endpoint /category/add dengan Bearer Token, dan body:
-   ```json
-   {
-      "name": "Ring"
-   }
-   ```
+## API Endpoints
+- Base endpoint: /api/v1
+- Product
+  1. GET /product/all -> retrieve all products
+  2. GET /product/{id} -> retrieve product with certain id
+  3. POST /product/add -> add new product
+  4. PUT /product/update/{id} -> update product with certain id
+  5. DELETE /product/delete/{id} -> delete product with certain id
+- Category
+  1. GET /category/all -> retrieve all cateogories
+  2. GET /category/{name} -> retrieve category with certain name
+  3. POST /category/add -> add new category
+  4. PUT /category/update/{id} -> update category with certain id
+  5. DELETE /category/delete/{id} -> delete category with certain id
+- Transaction
+  1. GET /transaction/all -> retrieve all transactions
+  2. POST /transaction/add -> add new transaction
+  3. DELETE /transaction/delete/{id} -> delete transaction with certain id
 
-5. Gunakan endpoint /product/add dengan Bearer Token, dan body :
-   ```json
-   {
-      "image": [
-         "https://ae-pic-a1.aliexpress-media.com/kf/Sb976fbea4536476c88e1476f24b5325eG.jpg_220x220q75.jpg_.avif",
-         "https://ae-pic-a1.aliexpress-media.com/kf/S342a75e1cc624ec4a0970b8fadfdcafdD.jpg_220x220q75.jpg_.avif",
-         "https://ae-pic-a1.aliexpress-media.com/kf/S326ce68d7b4d40a5ab7814ad31458b9cc.jpg_220x220q75.jpg_.avif",
-         "https://ae-pic-a1.aliexpress-media.com/kf/Seb29bb0cb2f74267a4f6a689940b11faD.jpg_220x220q75.jpg_.avif"
-      ],
-      "name": "OVAL GEMSTONE SIGNET RING",
-      "price": 41,
-      "review": ["4", "200k"],
-      "description": "This Signet's About To Be Your New Signature. It's An Approachable Power Move, Handcrafted in Sterling Silver.",
-      "colour": ["#ef4444", "#6b7280", "#14b8a6"],
-      "size": ["2", "3.5", "4"],
-      "length": ["18", "20", "22", "26", "28"],
-      "stock": 200,
-      "categoryId": 1
-   }
+## Deployment
+This project is deployed and hosted on Render ([Backend Dapur Emmak](https://point-of-sales-latest.onrender.com/))
 
-## tugas 15, 16, 17, 19, 20:
-1. Jalankan Project
-   ```bash
-   mvn spring-boot:run
-   ```
+## Author
+Bagus Sajiwo Utomo
 
-2. Gunakan endpoint /register dengan contoh body:
-   ```json
-   {
-      "name": "manager",
-      "role": "MANAGER",`
-      "username": "manager",
-      "password": "manager"
-   }
-   ```
-
-3. Salin token yang dihasilkan dari proses register manager.
-
-4. Gunakan endpoint /category/add dengan Bearer Token, dan body:
-   ```json
-   {
-      "name": "Ring"
-   }
-   ```
-
-5. Gunakan endpoint /product/add dengan Bearer Token, dan body :
-   ```json
-   {
-      "image": [
-         "https://ae-pic-a1.aliexpress-media.com/kf/Sb976fbea4536476c88e1476f24b5325eG.jpg_220x220q75.jpg_.avif",
-         "https://ae-pic-a1.aliexpress-media.com/kf/S342a75e1cc624ec4a0970b8fadfdcafdD.jpg_220x220q75.jpg_.avif",
-         "https://ae-pic-a1.aliexpress-media.com/kf/S326ce68d7b4d40a5ab7814ad31458b9cc.jpg_220x220q75.jpg_.avif",
-         "https://ae-pic-a1.aliexpress-media.com/kf/Seb29bb0cb2f74267a4f6a689940b11faD.jpg_220x220q75.jpg_.avif"
-      ],
-      "name": "OVAL GEMSTONE SIGNET RING",
-      "price": 41,
-      "review": ["4", "200k"],
-      "description": "This Signet's About To Be Your New Signature. It's An Approachable Power Move, Handcrafted in Sterling Silver.",
-      "colour": ["#ef4444", "#6b7280", "#14b8a6"],
-      "size": ["2", "3.5", "4"],
-      "length": ["18", "20", "22", "26", "28"],
-      "stock": 200,
-      "categoryId": 1
-   }
+LinkedIn: ([linkedin.com/in/bagus-utomo]([https://point-of-sales-latest.onrender.com/](https://www.linkedin.com/in/bagus-utomo/)))
+GitHub: ([bagusutom0](https://github.com/bagusutom0))
+Email: bagussajiwoutomo12@gmail.com

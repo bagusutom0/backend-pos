@@ -58,11 +58,11 @@ How to run this project:
   3. DELETE /transaction/delete/{id} -> delete transaction with certain id
 
 ## Deployment
-This project is deployed and hosted on Render ([Backend Dapur Emmak](https://point-of-sales-latest.onrender.com/))
+This project is deployed and hosted on Render [Backend Dapur Emmak](https://point-of-sales-latest.onrender.com/)
 
 ## Author
 Bagus Sajiwo Utomo
 
-LinkedIn: ([linkedin.com/in/bagus-utomo]([https://point-of-sales-latest.onrender.com/](https://www.linkedin.com/in/bagus-utomo/)))
-GitHub: ([bagusutom0](https://github.com/bagusutom0))
+LinkedIn: [linkedin.com/in/bagus-utomo]([https://point-of-sales-latest.onrender.com/](https://www.linkedin.com/in/bagus-utomo/))
+GitHub: [bagusutom0](https://github.com/bagusutom0)
 Email: bagussajiwoutomo12@gmail.com

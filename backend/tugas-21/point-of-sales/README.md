@@ -63,6 +63,6 @@ This project is deployed and hosted on Render [Backend Dapur Emmak](https://poin
 ## Author
 Bagus Sajiwo Utomo
 
-LinkedIn: [linkedin.com/in/bagus-utomo](https://www.linkedin.com/in/bagus-utomo/)
+LinkedIn: [linkedin.com/in/bagus-utomo](https://www.linkedin.com/in/bagus-utomo)
 GitHub: [bagusutom0](https://github.com/bagusutom0)
 Email: bagussajiwoutomo12@gmail.com

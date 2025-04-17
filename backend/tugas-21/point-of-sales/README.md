@@ -60,6 +60,9 @@ How to run this project:
 ## Deployment
 This project is deployed and hosted on Render [Backend Dapur Emmak](https://point-of-sales-latest.onrender.com/)
 
+## Other
+Frontend of this project: [Frontend Dapur Emmak](https://github.com/bagusutom0/final-project-prosigmaka)
+
 ## Author
 Bagus Sajiwo Utomo
 
